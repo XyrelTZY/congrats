@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Congrats</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #d0f4ff, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    .rabbit {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      margin: 0 auto;
+      animation: hop 1s infinite ease-in-out;
+    }
+
+    .ear {
+      width: 20px;
+      height: 50px;
+      background: #fff;
+      border-radius: 50% 50% 0 0;
+      position: absolute;
+      top: 0;
+      left: 20px;
+      transform: rotate(-15deg);
+    }
+
+    .ear.right {
+      left: 70px;
+      transform: rotate(15deg);
+    }
+
+    .face {
+      width: 100px;
+      height: 80px;
+      background: #fff;
+      border-radius: 50% 50% 40% 40%;
+      position: absolute;
+      top: 40px;
+      left: 10px;
+      z-index: 1;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .eye {
+      width: 10px;
+      height: 10px;
+      background: #333;
+      border-radius: 50%;
+      position: absolute;
+      top: 25px;
+    }
+
+    .eye.left {
+      left: 25px;
+    }
+
+    .eye.right {
+      right: 25px;
+    }
+
+    .nose {
+      width: 10px;
+      height: 10px;
+      background: pink;
+      border-radius: 50%;
+      position: absolute;
+      top: 40px;
+      left: 45px;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #444;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #fefefe;
+      color: black;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #fefefe;
+    }
+
+    @keyframes hop {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-25px); }
+      100% { transform: translateY(0); }
+    }
+    
+    /* Rose container styles */
+    .rose-container {
+      height: 180px;
+      width: 100%;
+      margin: 10px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    
+    .rose {
+      width: 100px;
+      height: 180px;
+      position: relative;
+    }
+    
+    .show-rose {
+      opacity: 1;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="rabbit">
+      <div class="ear"></div>
+      <div class="ear right"></div>
+      <div class="face">
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="nose"></div>
+      </div>
+    </div>
+    <button class="btn" onclick="showMessage()">Show Message</button>
+    <div class="rose-container" id="roseContainer">
+      <svg class="rose floating" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stem -->
+        <path d="M50 80 L50 180" stroke="#2e8b57" stroke-width="4" fill="none" stroke-linecap="round" />
+        
+        <!-- Leaves -->
+        <path d="M50 110 Q60 100 65 110 Q60 120 50 110 Z" fill="#3cb371" stroke="#2e8b57" stroke-width="0.5" />
+        <path d="M50 130 Q40 120 35 130 Q40 140 50 130 Z" fill="#3cb371" stroke="#2e8b57" stroke-width="0.5" />
+        
+        <!-- Outer Petals -->
+        <path d="M50 30 Q35 10 20 25 Q15 40 25 50 Q35 60 50 50 Q65 60 75 50 Q85 40 80 25 Q65 10 50 30 Z" 
+              fill="#ff007f" stroke="#c50063" stroke-width="0.8" />
+        
+        <!-- Middle Petals -->
+        <path d="M50 40 Q40 25 30 35 Q25 45 30 55 Q40 65 50 55 Q60 65 70 55 Q75 45 70 35 Q60 25 50 40 Z" 
+              fill="#ff1493" stroke="#c50063" stroke-width="0.6" />
+        
+        <!-- Inner Petals -->
+        <path d="M50 50 Q45 40 40 45 Q35 50 40 55 Q45 60 50 55 Q55 60 60 55 Q65 50 60 45 Q55 40 50 50 Z" 
+              fill="#ff69b4" stroke="#c50063" stroke-width="0.4" />
+        
+        <!-- Center -->
+        <circle cx="50" cy="40" r="8" fill="#8b0000" stroke="#600000" stroke-width="0.5" />
+        <circle cx="50" cy="40" r="5" fill="#5e0000" />
+      </svg>
+    </div>
+    <div class="message" id="rabbitMessage">Congrats, College nata!</div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("rabbitMessage").classList.add("show");
+      document.getElementById("roseContainer").classList.add("show-rose");
+    }
+  </script>
+
+</body>
+</html>
